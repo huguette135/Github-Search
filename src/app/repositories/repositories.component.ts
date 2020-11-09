@@ -17,6 +17,7 @@ export class RepositoriesComponent implements OnInit {
   reponame:string;
   show:number;
 
+
   constructor(private searchRequestService: SearchRequestService) { 
     this.repos = new Repository ("","",new Date());
     this.searchRequestService.getRepoInfo().subscribe(repos => {
@@ -26,3 +27,28 @@ export class RepositoriesComponent implements OnInit {
 
      
   }
+
+
+  searchRepo(){
+    this.searchRequestService.updateRepos(this.reponame);
+    this.searchRequestService.getRepoInfo().subscribe(repos => {
+     console.log(repos);
+     
+   });
+   
+  }
+
+  loadMore(){
+    // this.dataService.updateRepos(this.reponame);
+    this.searchRequestService.updateShow(this.show);
+    this.searchRequestService.getRepoInfo().subscribe(repos => {
+     console.log(repos);
+   });
+   
+  }
+
+
+  ngOnInit() {
+  }
+
+}
