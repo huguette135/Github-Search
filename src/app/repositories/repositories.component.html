@@ -12,3 +12,9 @@
           <p class="searchtext">Enter Repository name to search for github profile</p>
         </div>
         <div class="col-md-6" *ngFor="let repo of repos['items']">
+            <div class="cards repocard" >
+                <div class="card-header">
+      
+                  <h5 class = "card-title inline" appFont>
+                      {{repo['name']}}
+                  </h5>
