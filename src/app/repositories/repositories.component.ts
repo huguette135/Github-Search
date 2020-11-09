@@ -17,3 +17,12 @@ export class RepositoriesComponent implements OnInit {
   reponame:string;
   show:number;
 
+  constructor(private searchRequestService: SearchRequestService) { 
+    this.repos = new Repository ("","",new Date());
+    this.searchRequestService.getRepoInfo().subscribe(repos => {
+      console.log(repos);
+      
+    });
+
+     
+  }
