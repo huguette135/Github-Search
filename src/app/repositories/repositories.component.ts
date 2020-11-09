@@ -10,3 +10,10 @@ import {Repository} from '../repository';
     providers: [SearchRequestService],
   styleUrls: ['./repositories.component.css']
 })
+export class RepositoriesComponent implements OnInit {
+
+
+  repos:Repository;
+  reponame:string;
+  show:number;
+
