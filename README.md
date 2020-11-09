@@ -1,6 +1,6 @@
 # Github
 
-A web application that allows user create view and classify quotes by voting This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 10.2.0.
+A web application that enable users to search for githubname and repositories This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 10.2.0.
 ## Author
 UMUTONI Huguette
 ## Description
