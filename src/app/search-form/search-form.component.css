@@ -29,3 +29,11 @@ button {
    opacity: 0.9;
 }
 
+
+
+form {
+   background-color: rosybrown;
+   padding: 20px;
+   width: 100vh;
+    /*height: 100%; */
+}

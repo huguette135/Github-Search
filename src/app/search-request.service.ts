@@ -1,11 +1,10 @@
 
- 
 import { Injectable } from '@angular/core';
 import {environment} from '../environments/environment';
 import {Repository} from './repository';
 import {User} from './user';
 import { HttpClient} from '@angular/common/http';
-import { map } from 'rxjs/operators';
+
 
 @Injectable({
   providedIn: 'root'
@@ -13,10 +12,8 @@ import { map } from 'rxjs/operators';
 export class SearchRequestService {
     repository: Repository;
     users: User;
-    private reponame: string;
-  private show:number
-  newRepository;
- 
+    newRepository: any;
+    searchRepo: any;
 
     constructor(private http: HttpClient) {
         this.repository = new Repository( '', '', new Date());
@@ -72,15 +69,21 @@ export class SearchRequestService {
     }
 
 
-    
-    getRepoInfo(){
-      return this.http.get( environment.miApi + 'search/repositories?q={' + this.reponame +'}&per_page='+this.show+'&sort=forks&order=asc?' + environment.miApi);
-    }
-    updateRepos(reponame:string){
-      this.reponame = reponame;
-    }
-  
-    updateShow(show:number){
-      this.show = this.show+10;
+    gitRepos(searchName) {
+        interface ApiResponse {
+            items: any;
+        }
+
+        const promise = new Promise((resolve, reject) => {
+            this.http.get<ApiResponse>('https://api.github.com/search/repositories?q=' + searchName + ' &per_page=10 ' + environment.miApi).toPromise().then(getRepoResponse => {
+                this.searchRepo = getRepoResponse.items;
+
+                resolve();
+            }, error => {
+                this.searchRepo = 'error';
+                reject(error);
+            });
+        });
+        return promise;
     }
 }

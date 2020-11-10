@@ -1,10 +1,8 @@
 
-
 import { Component, OnInit } from '@angular/core';
 import {SearchRequestService} from '../search-request.service';
 import {Repository} from '../repository';
 import {User} from '../user';
-import {Router} from '@angular/router'
 
 @Component({
   selector: 'app-user-info',
@@ -14,7 +12,7 @@ import {Router} from '@angular/router'
 })
 export class UserInfoComponent implements OnInit {
 
-  public searchMe = 'huguette135'
+  public searchMe = 'huguette135';
   public githubUser: string;
 
 
@@ -29,7 +27,7 @@ export class UserInfoComponent implements OnInit {
   }
 
 
-constructor(public githubUserRequest: SearchRequestService, public userRepos: SearchRequestService ,private router:Router) { }
+constructor(public githubUserRequest: SearchRequestService, public userRepos: SearchRequestService) { }
 
 ngOnInit() {
     this.githubUserRequest.githubUser(this.searchMe);
